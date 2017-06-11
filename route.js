@@ -1,3 +1,5 @@
+var path = require('path')
+
 module.exports = function(app, Post) {
   app.get('/posts', function(req,res){
     Post.find(function(err, posts){
@@ -67,4 +69,6 @@ module.exports = function(app, Post) {
       res.status(204).end();
     })
   })
+
+  app.use('/', express.static(path.join(__dirname, 'public')))
 }
